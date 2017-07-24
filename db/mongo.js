@@ -20,7 +20,8 @@ class Mongo{
 			server: {
 				socketOptions: { 
 					keepAlive: 1 
-				}
+				},
+                useMongoClient:true
 			}
 		}
 

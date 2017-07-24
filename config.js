@@ -2,18 +2,18 @@ export default {
 	secret: '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
 	mongo: {
 		development: {
-			connectionString: 'mongodb://127.0.0.1:27017/mall'
+			connectionString: 'mongodb://115.28.62.110:20005/mall'
 		},
 		production: {
-			connectionString: 'mongodb://127.0.0.1:27017/mall'
+			connectionString: 'mongodb://115.28.62.110:20005/mall'
 		}
 	},
 	redis: {
 		development: {
-			connectionString: 'redis://127.0.0.1:6379'
+			connectionString: 'redis://:payplug@115.28.62.110:6379/9'
 		},
 		production: {
-			connectionString: 'redis://127.0.0.1:6379',
+			connectionString: 'redis://:payplug@115.28.62.110:6379/9',
 		}
 	},
 	upload: {
