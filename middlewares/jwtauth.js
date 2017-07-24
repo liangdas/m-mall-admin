@@ -32,7 +32,8 @@ class Middlewares{
 
 		this.redisClient.get(token, (err, reply) => {
 			if (err) return res.tools.setJson(500, '服务器错误')
-			if (reply) return res.tools.setJson(401, '无权访问',token)
+			console.log(token);
+			if (reply) return res.tools.setJson(401, '无权访问')
 
 			User.findByIdAsync(req.user.id)
 			.then(doc => {
