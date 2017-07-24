@@ -1,0 +1,13 @@
+{
+    "apps": [{
+    "name": "app",
+    "script": "./bin/www",
+    "node_args": "--harmony",
+    "default_log_path": "./logs",
+    "autorestart": false,
+    "watch": true,
+    "exec_interpreter": "babel-node",
+    "exec_mode": "fork",
+    "log_date_format": "YYYY - MM - DD HH: mm Z"
+}]
+}
