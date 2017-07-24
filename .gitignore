@@ -43,7 +43,7 @@ public/node_modules/*
 public/build/*
 public/tmp/*
 public/uploads/*
-public/apidoc/*
+#public/apidoc/*
 logs/*.log.*
 
 mochawesome-reports/*
