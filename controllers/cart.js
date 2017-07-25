@@ -200,34 +200,34 @@ class Ctrl{
 		const query = {
 			goods : req.body.goods, 
 			user : req.user._id, 
-		}
+		};
 
 		const body = {
 			goods : req.body.goods, 
 			total: Number(req.body.total) || 1, 
 			user : req.user._id, 
-		}
+		};
 
-		const p1 = proxy.goods.findByIdAsync(query.goods)
-		const p2 = this.model.findOneAsync(query)
+		const p1 = proxy.goods.findByIdAsync(query.goods);
+		const p2 = this.model.findOneAsync(query);
 
 		Promise.all([p1, p2])
 		.then(doc => {
-			const goods = doc[0]
-			const cart  = doc[1]
+			const goods = doc[0];
+			const cart  = doc[1];
 
-			if (!goods) return res.tools.setJson(1, '资源不存在或已删除')
+			if (!goods) return res.tools.setJson(1, '资源不存在或已删除');
 
 			if (!cart) {
-				body.amount = goods.price
-				body.totalAmount = goods.price * body.total
-				return this.model.post(body)
+				body.amount = goods.price;
+				body.totalAmount = goods.price * body.total;
+				return this.model.post(body);
 			}
 
-			cart.total = cart.total + body.total
-			cart.amount = goods.price
-			cart.totalAmount = goods.price * cart.total
-			return cart.save()
+			cart.total = cart.total + body.total;
+			cart.amount = goods.price;
+			cart.totalAmount = goods.price * cart.total;
+			return cart.save();
 		})
 		.then(doc => res.tools.setJson(0, '新增成功', {_id: doc._id}))
 		.catch(err => next(err))
@@ -280,21 +280,21 @@ class Ctrl{
 		const query = {
 			_id : req.params.id, 
 			user: req.user._id, 
-		}
+		};
 
 		const body = {
 			total: req.body.total, 
-		}
+		};
 
 		this.model.findOneAsync(query)
 		.then(doc => {
 			if (!doc) return res.tools.setJson(1, '资源不存在或已删除')
-			doc.total = Math.abs(body.total)
+			doc.total = Math.abs(body.total);
 			doc.totalAmount = Math.abs(doc.amount * doc.total)
-			return doc.save()
+			return doc.save();
 		})
 		.then(doc => res.tools.setJson(0, '更新成功', doc))
-		.catch(err => next(err))
+		.catch(err => next(err));
 	}
 
 	/**
