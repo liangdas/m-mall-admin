@@ -41,7 +41,6 @@ class RestBase extends FeatureBase{
 	 * @return {Function}      
 	 */
 	post(body = {}) {
-        body.types=[body.types]
 		return new this.model(body).save()
 	}
 
